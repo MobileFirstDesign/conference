@@ -1,0 +1,2 @@
+# conference
+A static conference
