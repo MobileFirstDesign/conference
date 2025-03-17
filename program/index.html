@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>18IHC prg day2</title>
+    <meta charset="utf-8">
+    <!--
+        Google PageSpeed Insights Score
+
+      Performance:   100   Best Practices:   100
+      Accessibility: 100   SEO:              100
+
+        First Contentful Paint:    0.2 s
+        Total Blocking Time        0   ms 
+        Speed Index:               0.2 s
+        Largest Contentful Paint:  0.3 s 
+        Cumulative Layout Shift:     0 s 
+
+            Last audit: Mar 6, 2025 11:07
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Program day 2 at the 17th International Hydrocolloids Conference">
+    <meta name="robots" content="all">
+    <meta name="color-scheme" content="light dark">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-favicon.png">
+    <link rel="stylesheet" href="/css/mobile2.css">
+    <style>
+      :root {
+      --date-bar: hsl(var(--theme-hue), 100%, 86%); 
+      --room-bar: #ffffff;
+      --pick-room: hsl(var(--theme-hue), 100%, 86%);
+      --tbl-head: hsl(var(--theme-hue), 79%, 42%);
+      }
+      .sticky-nav {z-index:100;}
+      .sticky-date {z-index:50;position:sticky; top:50px;}
+      .date-bar{display: flex; justify-content: center; gap:1rem;align-items: center;background-color: var(--date-bar); box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); color:black;}
+      .svg {margin-top:5px;}
+      .left{padding-left: 1rem;position: sticky; top:90px;}
+      .nav-label1, .nav-label2, .nav-label3 {cursor: pointer;}
+      .nav-label1 {position: sticky; top:90px;}
+      .nav-label2{position: sticky; top:90px;}
+      .room-bar {position: sticky; top:88px; height:30px;}
+      .toggle-column-2:not(:checked)~table td:nth-child(2) {display: none; }
+      .toggle-column-3:not(:checked)~table td:nth-child(3) {display: none;}
+      .toggle-column-4:not(:checked)~table td:nth-child(4) {display: none;}
+      #coln2,  #coln3,  #coln4{ display: none;}
+      input:checked + .rm {color: black; font-weight: bold; text-decoration: underline; background-color: var(--pick-room);padding: 0 4px 4px 4px;}
+      input:not(:checked) + .rm { text-decoration: underline;padding: 0 4px 4px 4px;}
+      .break {background-color: hsl(120, 73%, 93%); color:rgb(53, 54, 58);}
+      .session {background-color: hsl(60, 73%, 93%); color:rgb(53, 54, 58);}
+      .plenary {background-color: hsl(260, 73%, 93%); color:rgb(53, 54, 58);}
+      .keynote {background-color: hsl(335, 72%, 93%); color:rgb(53, 54, 58);}
+      .alternate { background-color: #eee; color:rgb(53, 54, 58);}
+      .tbl-head {background-color: var(--tbl-head);color:var(--room-bar); position:sticky;top:116px; z-index: 51;}
+      /*bookmark*/
+      [type=radio] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      }
+      input + label {
+      fill: white;
+      stroke: black;
+      cursor: pointer;
+      padding: 1rem 1rem 1rem 0;
+      }
+      input:checked + label {
+      fill: hsl(var(--theme-hue), 100%, 86%);
+      }
+      .bookmark {padding:0 1rem;}
+      footer .text-center {font-size: 10pt;padding-top:2rem}
+      /*modal*/
+      .modal-btn {cursor: pointer;padding: 2px 5px;}
+      dialog[open] {max-width:80ch;margin: auto; padding: auto;box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);}
+      dialog::backdrop { backdrop-filter: blur(2px);}
+      .close {border-radius: 50%; color: white; background: black; position: absolute; top: 0; right: 0; cursor: pointer; }
+      .close:has(+ p) { top:1rem;}
+      dialog > article {font-style:normal;padding: 0 2ch;}
+      dialog >.title      {font:bold 16pt/1.1 Arial, sans-serif;}
+      .author     {font: normal 12pt/1.1 'Times New Roman', Times, serif;}
+      .affiliation{font: normal 12pt/1.1 'Times New Roman', Times, serif;padding:0;}
+      .abody      {font: normal 11pt/1.1 Arial,sans-serif; padding:0.4rem 1ch 0 0; }
+      .references{font-size: 10pt;padding:0.2rem 0 0 3ch;}
+      .ref-heading {text-indent: -1.5em; list-style-type: none;}
+      .artwork {width:100%; max-width:80ch;}
+      @media print {
+      section {visibility: hidden;}
+      dialog {visibility: visible;
+      position: absolute;left: 0;top: 5rem; border-color: white;overflow: hidden;}
+      .flex {display: none;}
+      article { max-width:100ch; margin:0;padding:0;}
+      p.hide {display: none;}
+      .artwork {width:100%; height: 100%!important;}
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header-center">
+      <h1>The 18<sup>th</sup> International<br>Hydrocolloids Conference<br><time datetime="2026-mm-dd">Spring, 2026, City, Japan</time></h1>
+    </header>
+    <nav class="navbar sticky-nav">
+      <a class="hide" href="/">Home</a>
+      <div class="dropdown">
+        <button type="submit" class="dropbtn" aria-haspopup="true">Info<span class="hide">rmation</span><strong class="caret"></strong></button>
+        <div class="dropdown-content">
+          <a href="/info/register.html">Register</a>
+          <a href="/info/call.html">Call for Abstracts</a>
+          <a href="/info/submit.html">Submit Abstracts</a>
+          <a href="/info/journal.html">Supporting Journal</a>
+          <a href="/info/prize.html">G O Phillips prize</a>
+          <a href="/info/committee.html">Committee</a>
+          <a href="/info/index.html">History</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn active" aria-haspopup="true">Program<strong class="caret"></strong></button>
+        <div class="dropdown-content">
+          <a class="drop-active" href="/program/index.html">Program</a>
+          <!--a class="pdf" href="/17th-IHC-Abstract-Book.pdf" target="_blank">Program & Abstract Book (pdf 2.9mb)</a-->
+          <a href="/program/speakers.html">Speakers</a>
+          <a href="/program/posters.html">Poster</a>
+          <a href="/program/social.html">Social Program</a>
+          <a href="/program/gallery.html">Photo Gallery</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" aria-haspopup="true">Location<strong class="caret"></strong></button>
+        <div class="dropdown-content">
+          <a href="/location/index.html">Venue</a>
+          <a href="/location/accommodation.html">Accommodation</a>
+          <a href="/location/travel.html">Travel Information</a>
+          <a href="/location/palmy.html">Attractions</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" aria-haspopup="true">Support<strong class="caret"></strong></button>
+        <div class="dropdown-content">
+          <a href="/exhibits/index.html">Exhibitors</a>
+          <a href="/exhibits/sponsors.html">Sponsors</a>
+        </div>
+      </div>
+      <a class="hide" href="/deadlines/index.html">Deadlines</a>
+      <a class="hide" href="/contacts/index.html">Contacts</a>
+    </nav>
+    <nav class="date-bar sticky-date">
+      <p>
+        <a href="social.html" class="day-before" aria-label="previous day program">
+          <svg class="svg target-area" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="22 2 22 22 2 12 22 2" stroke="#999" stroke-width="2" fill="none" />
+          </svg>
+        </a>
+      </p>
+      <p><strong>day2&nbsp;month&nbsp;2026</strong></p>
+      <p>
+        <a href="prgm-day3.html" class="day-after" aria-label="next day program">
+          <svg class="svg target-area" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="2 2 22 12 2 22 2 2" stroke="black" stroke-width="2" fill="none" />
+          </svg>
+        </a>
+      </p>
+    </nav>
+    <nav class="navbar mobile">
+      <a href="/">Home</a>
+      <a href="/deadlines/index.html">Deadlines</a>
+      <a href="/contacts/index.html">Contacts</a>
+    </nav>
+    <main>
+      <div class="room-bar"></div>
+      <h2 style="text-align:center;padding-bottom:1rem;">Program Wednesday</h2>
+      <form id='main' onsubmit='return false'>
+        <strong class="left"><span class="hide">Lecture</span> Hall&nbsp;&nbsp;</strong>
+        <input name="room" class="toggle-column-2" id="coln2" type="radio" checked>
+        <label class="nav-label1 rm" for="coln2">room1</label>
+        <span class="noprint"> |&nbsp;&nbsp;</span>
+        <input name="room" class="toggle-column-3" id="coln3" type="radio">
+        <label class="nav-label2 rm" for="coln3">room2</label>
+        <span class="noprint"> |&nbsp;&nbsp;</span>
+        <input name="room" class="toggle-column-4" id="coln4" type="radio">
+        <label class="nav-label3 rm" for="coln4">room3</label>
+        <table style="padding: 0 1rem; width:100%">
+          <thead class="tbl-head">
+            <tr>
+              <td style="padding-right:4em;">&nbsp;<b>Time</b></td>
+              <td>&nbsp;<label class="nav-label2 rm" for="coln3"><b> room1 ▷</b></label></td>
+              <td>&nbsp;<label class="nav-label3 rm" for="coln4"><b> room2 ▷</b></label></td>
+              <td>&nbsp;<label class="nav-label1 rm" for="coln2"><b> room3 ▷</b></label></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="session">
+              <td>&nbsp;</td>
+              <td><strong>Session Chair: add name</strong><span style="padding:230px;">&nbsp;</span></td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr class="break">
+              <td>&nbsp;8:20-&nbsp;8:50</td>
+              <td><strong>Welcome add names</strong></td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr class="plenary">
+              <td>&nbsp;8:50-&nbsp;9:30</td>
+              <td><strong>P1-245 Plenary Speaker, Talk title</strong>
+                <button type="submit" onclick="a245.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr class="plenary">
+              <td>&nbsp;9:30-10:10</td>
+              <td><strong>P2-240 Plenary Speaker, Talk title</strong>
+                <button type="submit" onclick="a240.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr class="break">
+              <td>10:10-10:40</td>
+              <td>Break</td>
+              <td>Break</td>
+              <td>Break</td>
+            </tr>
+            <tr class="session">
+              <td>&nbsp;</td>
+              <td><strong>Session Chair: Add Name</strong></td>
+              <td><strong>Session Chair: Add Name</strong></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr class="keynote">
+              <td> 10:40-11:10</td>
+              <td><strong>I1-101 Invited Speaker, Talk title</strong>
+                <button type="submit" onclick="a101.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td><strong>I4-250 Invited Speaker, Talk title</strong>
+                <button type="submit" onclick="a250.showModal()" class="modal-btn">abstract</button></td-->
+              <td>&nbsp;</td>
+            </tr>
+            <tr class="keynote">
+              <td>11:10-11:40</td>
+              <td><strong>I2-249 Invited Speaker, Talk title</strong>
+                <button type="submit" onclick="a249.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td><strong>I5-239 Invited Speaker, Talk titles</strong>
+                <button type="submit" onclick="a239.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr class="keynote">
+              <td>11:40-12:10</td>
+              <td><strong>I3-238 Invited Speaker, Talk title</strong>
+                <button type="submit" onclick="a238.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td><strong>I6-251 Invited Speaker, Talk title</strong>
+                <button type="submit" onclick="a251.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr class="break">
+              <td>12:10-13:40</td>
+              <td>Lunch/Poster</td>
+              <td>Lunch/Poster</td>
+              <td>Lunch/Poster</td>
+            </tr>
+          </tbody>
+          <thead class="tbl-head">
+            <tr>
+              <td style="padding-right:4em;">&nbsp;<b>Time</b></td>
+              <td>&nbsp;<label class="nav-label2 rm" for="coln3"><b> room1 ▷</b></label></td>
+              <td>&nbsp;<label class="nav-label3 rm" for="coln4"><b> room2 ▷</b></label></td>
+              <td>&nbsp;<label class="nav-label1 rm" for="coln2"><b> room3 ▷</b></label></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="session">
+              <td>&nbsp;</td>
+              <td><strong>Session chair: Add Name</strong> </td>
+              <td><strong>Session chair: Add Name</strong> </td>
+              <td><strong>Session chair: Add Name</strong> </td>
+            </tr>
+            <tr class="alternate">
+              <td>13:40-14:00</td>
+              <td class="coln2">
+                <input class="chx" type="radio" id="O1.01" name="slot1" value="C01">
+                <label for="O1.01">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C1-223  Talk title</strong>
+                <button type="submit" onclick="a223.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td class="coln3">
+                <input class="chx" id="O2.01" type="radio" name="slot1" value="0201">
+                <label for="O2.01">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C11-210 Talk title</strong>
+                <button type="submit" onclick="a210.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td class="coln4">
+                <input class="chx" id="O3.01" type="radio" name="slot1" value="0301">
+                <label for="O3.01">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C21-221 - Talk title</strong>
+                <button type="submit" onclick="a221.showModal()" class="modal-btn">abstract</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="nowrap">14:00-14:20</td>
+              <td class="coln2">
+                <input class="chx" type="radio" id="O1.02" name="slot2" value="0102">
+                <label for="O1.02">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C2-226. Talk title</strong> 
+                <button type="submit" onclick="a226.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td class="coln3">
+                <input class="chx" id="O2.02" type="radio" name="slot2" value="0202">
+                <label for="O2.02">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C12-187. Talk title </strong> 
+                <button type="submit" onclick="a187.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td class="coln4">
+                <input class="chx" id="O3.02" type="radio" name="slot2" value="0202">
+                <label for="O3.02">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C22-254. Talk title</strong> 
+                <button type="submit" onclick="a254.showModal()" class="modal-btn">abstract</button>
+              </td>
+            </tr>
+            <tr class="alternate">
+              <td class="nowrap">14:20-14:40</td>
+              <td class="coln2">
+                <input class="chx" type="radio" id="O1.03" name="slot3" value="0103">
+                <label for="O1.03">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C3-163. Talk title</strong> 
+                <button type="submit" onclick="a163.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td class="coln3">
+                <input class="chx" id="O2.03" type="radio" name="slot3" value="0203">
+                <label for="O2.03">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong> C13-120. Talk title</strong> 
+                <button type="submit" onclick="a120.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td class="coln4">
+                <input class="chx" id="O3.03" type="radio" name="slot3" value="0303">
+                <label for="O3.03">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C23-138. Talk title</strong> 
+                <button type="submit" onclick="a138.showModal()" class="modal-btn">abstract</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="nowrap">14:40-15:00</td>
+              <td class="coln2">
+                <input class="chx" type="radio" id="O1.04" name="slot4" value="0104">
+                <label for="O1.04">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C4-110. Talk title</strong> 
+                <button type="submit" onclick="a110.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td class="coln3">
+                <input class="chx" id="O2.04" type="radio" name="slot4" value="0204">
+                <label for="O2.04">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C14-222. Talk title</strong> 
+                <button type="submit" onclick="a222.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td class="coln4">
+                <input class="chx" id="O3.04" type="radio" name="slot4" value="0304">
+                <label for="O3.04">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C24-172. Talk title</strong> 
+                <button type="submit" onclick="a172.showModal()" class="modal-btn">abstract</button>
+              </td>
+            </tr>
+            <tr class="alternate">
+              <td class="nowrap">15:00-15:20</td>
+              <td class="coln2">
+                <input class="chx" type="radio" id="O1.05" name="slot5" value="0105">
+                <label for="O1.05">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C5-217. Talk title</strong>
+                <button type="submit" onclick="a217.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td class="coln3">
+                <input class="chx" id="O2.05" type="radio" name="slot5" value="0205">
+                <label for="O2.05">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C15-111. Talk title</strong> 
+                <button type="submit" onclick="a111.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td class="coln4">
+                <input class="chx" id="O3.05" type="radio" name="slot5" value="0305">
+                <label for="O3.05">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C25-125. Talk title</strong> 
+                <button type="submit" onclick="a125.showModal()" class="modal-btn">abstract</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="nowrap">15:20-15:40</td>
+              <td class="coln2">
+                <input class="chx" type="radio" id="O1.06" name="slot6" value="0106">
+                <label for="O1.06">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C6-118. Talk title</strong> 
+                <button type="submit" onclick="a118.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td class="coln3">
+                <input class="chx" id="O2.06" type="radio" name="slot6" value="0206">
+                <label for="O2.06">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C16-213. Talk title</strong> 
+                <button type="submit" onclick="a213.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td class="coln4">
+                <input class="chx" id="O3.06" type="radio" name="slot6" value="0306">
+                <label for="O3.06">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C26-146. Talk title</strong> 
+                <button type="submit" onclick="a146.showModal()" class="modal-btn">abstract</button>
+              </td>
+            </tr>
+            <tr class="break">
+              <td>15:40-16:00</td>
+              <td>Break</td>
+              <td>Break</td>
+              <td>Break</td>
+            </tr>
+            <tr class="session">
+              <td>&nbsp;</td>
+              <td><strong>Session chair: Add Name</strong> </td>
+              <td><strong>Session chair: Add Name</strong> </td>
+              <td><strong>Session chair: Add Name</strong> </td>
+            </tr>
+            <tr class="alternate">
+              <td class="nowrap">16:00-16:20</td>
+              <td class="coln2">
+                <input class="chx" type="radio" id="O1.08" name="slot8" value="0302">
+                <label for="O1.08">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C7-117. Talk title </strong>
+                <button type="submit" onclick="a117.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td class="coln3">
+                <input class="chx" id="O2.08" type="radio" name="slot8" value="0402">
+                <label for="O2.08">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C17-160. Talk title</strong>
+                <button type="submit" onclick="a160.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td class="coln4">
+                <input class="chx" id="O3.08" type="radio" name="slot8" value="0502">
+                <label for="O3.08">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C27-170. Talk title</strong>
+                <button type="submit" onclick="a170.showModal()" class="modal-btn">abstract</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="nowrap">16:20-16:40</td>
+              <td class="coln2">
+                <input class="chx" type="radio" id="O1.09" name="slot9" value="0303">
+                <label for="O1.09">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C8-224. Talk title</strong>
+                <button type="submit" onclick="a224.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td class="coln3">
+                <input class="chx" id="O2.09" type="radio" name="slot9" value="0403">
+                <label for="O2.09">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C18-219. Talk title</strong>
+                <button type="submit" onclick="a219.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td class="coln4">
+                <input class="chx" id="O3.09" type="radio" name="slot9" value="0503">
+                <label for="O3.09">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C28-175. Talk title</strong>
+                <button type="submit" onclick="a175.showModal()" class="modal-btn">abstract</button>
+              </td>
+            </tr>
+            <tr class="alternate">
+              <td class="nowrap">16:40-17:00</td>
+              <td class="coln2">
+                <input class="chx" type="radio" id="O1.10" name="slot10" value="0304">
+                <label for="O1.10">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C9-186. Talk title</strong>
+                <button type="submit" onclick="a186.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td class="coln3">
+                <input class="chx" id="O2.10" type="radio" name="slot10" value="0404">
+                <label for="O2.10">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C19-220. Talk title</strong>
+                <button type="submit" onclick="a220.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td class="coln4">
+                <input class="chx" id="O3.10" type="radio" name="slot10" value="0504">
+                <label for="O3.10">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C29-154. Talk title</strong>
+                <button type="submit" onclick="a154.showModal()" class="modal-btn">abstract</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="nowrap">17:00-17:20</td>
+              <td class="coln2">
+                <input class="chx" type="radio" id="O1.11" name="slot11" value="0305">
+                <label for="O1.11">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C10-158. Talk title</strong>
+                <button type="submit" onclick="a158.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td class="coln3">
+                <input class="chx" id="O2.11" type="radio" name="slot11" value="0405">
+                <label for="O2.11">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C20-153. Talk title</strong>
+                <button type="submit" onclick="a153.showModal()" class="modal-btn">abstract</button>
+              </td>
+              <td class="coln4">
+                <input class="chx" id="O3.11" type="radio" name="slot11" value="0505">
+                <label for="O3.11">
+                  <svg height="24" width="24">
+                    <title>checkmark</title>
+                    <polygon points="0,8 12,8 12,24 6,19 0,24"></polygon>
+                  </svg>
+                </label>
+                <strong>C30-119. Talk title</strong>
+                <button type="submit" onclick="a119.showModal()" class="modal-btn">abstract</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+      <p class="bookmark">Click the button to clear Wednesday's bookmarks: <button class="btn-clear-storage" onclick="deleteItem()">Clear</button></p>
+      <footer>
+        <p class="text-center">© 2024-<span id="print-year"></span> •  All Rights Reserved • 18IHC
+          <br>Site Updated <span id="timestamp"></span>
+        </p>
+      </footer>
+    </main>
+    <script>
+      let text = document.lastModified;
+      document.getElementById("timestamp").innerHTML = text;
+      
+      let currentYear = new Date().getFullYear();
+      document.getElementById("print-year").innerHTML = currentYear;
+    </script>
+    <!--Modal dialog box-->
+    <dialog id="a101">
+      <button onclick="window.a101.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a101</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a110">
+      <button onclick="window.a110.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a110</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a111">
+      <button onclick="window.a111.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a111</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a117">
+      <button onclick="window.a117.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a117</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a118">
+      <button onclick="window.a118.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a118</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a119">
+      <button onclick="window.a119.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a119</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a120">
+      <button onclick="window.a120.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a120</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a125">
+      <button onclick="window.a125.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a125</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a138">
+      <button onclick="window.a138.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a138</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a146">
+      <button onclick="window.a146.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a146</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a153">
+      <button onclick="window.a153.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a153</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a154">
+      <button onclick="window.a154.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a154</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a158">
+      <button onclick="window.a158.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a158</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a160">
+      <button onclick="window.a160.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a160</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a163">
+      <button onclick="window.a163.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a163</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a170">
+      <button onclick="window.a170.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a170</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a172">
+      <button onclick="window.a172.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a172</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a175">
+      <button onclick="window.a175.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a175</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a186">
+      <button onclick="window.a186.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a186</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a187">
+      <button onclick="window.a187.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a187</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a210">
+      <button onclick="window.a210.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a210</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a213">
+      <button onclick="window.a213.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a213</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a217">
+      <button onclick="window.a217.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a217</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a219">
+      <button onclick="window.a219.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a219</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a220">
+      <button onclick="window.a220.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a220</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a221">
+      <button onclick="window.a221.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a221</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a222">
+      <button onclick="window.a222.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a222</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a223">
+      <button onclick="window.a223.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a223</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a224">
+      <button onclick="window.a224.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a224</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a226">
+      <button onclick="window.a226.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a226</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a238">
+      <button onclick="window.a238.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a238</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a239">
+      <button onclick="window.a239.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a239</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a240">
+      <button onclick="window.a240.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a240</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a245">
+      <button onclick="window.a245.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a245</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a249">
+      <button onclick="window.a249.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a249</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a250">
+      <button onclick="window.a250.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a250</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a251">
+      <button onclick="window.a251.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a251</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <dialog id="a254">
+      <button onclick="window.a254.close();" class="close" aria-label="close popup">X</button>
+      <article>
+        <h2 class="title"><sup>a254</sup>title</h2>
+        <p class="authors"> fname lname<sup>1*</sup>, fname lname<sup>2</sup> and fname lname<sup>2</sup></p>
+        <p class="affiliate">
+          <sup>1</sup>affiliation</br>
+          <sup>2</sup>affiliation
+        </p>
+        <div class="abody">
+          <p>abstract body</p>
+        </div>
+      </article>
+    </dialog>
+    <!-- End Modal dialog box-->
+    <script>
+      //bookmark selection
+      var main = document.forms[0];
+      
+      !(function(m) {
+      var values = JSON.parse(localStorage.getItem('chx')) || [];
+      values.forEach(function(val, idx) {
+      if (val === 1) {
+      m.elements[idx].setAttribute('checked', true);
+      }
+      });
+      })(main);
+      
+      main.addEventListener('change', saveChx);
+      
+      function saveChx(e) {
+      var chxArray = Array.from(main.elements);
+      var values = chxArray.map(function(chk) {
+      return chk.checked ? 1 : 0;
+      });
+      console.log(values);
+      return localStorage.setItem('chx', JSON.stringify(values));
+      }
+      function deleteItems() {localStorage.clear();location.reload();}
+      function deleteItem() {localStorage.removeItem("chx");location.reload();}
+    </script>
+  </body>
+</html>
