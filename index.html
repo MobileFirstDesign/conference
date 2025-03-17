@@ -171,7 +171,7 @@
             </p>
             <div class="grid-img-text">
                <picture>
-                  <img srcset="./program/photos/speakers/AI-1x.webp 1x,
+                  <img srcset="./program/photos/speakers/AI-2x.webp 1x,
                      ./program/photos/speakers/AI-2x.webp 2x,
                      ./program/photos/speakers/AI-3x.webp 3x"
                      src="./program//photos/speakers/AI.jpg" 
@@ -190,5 +190,9 @@
             <p class="text-center">© 2024-<span id="print-year"></span> •  All Rights Reserved • 18IHC</p>
          </footer>
       </main>
+      <script>
+         let currentYear = new Date().getFullYear();
+         document.getElementById("print-year").innerHTML = currentYear;
+       </script>
    </body>
 </html>
