@@ -40,34 +40,9 @@
          @media only screen and (max-width: 550px) {
          .grid-img-text {grid-template-columns: 1fr;}
          }
-         /*dark theme*/
-         html[data-theme=💻] {
-         color-scheme: light dark;
-         --text-color: hsl(0, 10%, 0%);
-         --bkg-color: hsl(220, 10%, 100%);
-         }
-         html[data-theme=☀️] {
-         --hue: 0;
-         --saturation: 10%;
-         color-scheme: light;
-         --text-color: hsl(0, 10%, 0%);
-         --bkg-color: hsl(220, 10%, 100%);
-         }
-         html[data-theme=🌑] {
-         --hue: 220;
-         --saturation: 10%;
-         color-scheme: dark;
-         color: hsl(220, 10%, 100%);
-         --bkg-color: hsl(0, 10%, 0%);
-         }
+
       </style>
-      <!--dark mode-->
-      <script>
-         const theme = localStorage.getItem("theme");
-         if (theme !== null) {
-           document.documentElement.dataset.theme = theme;
-         }
-      </script>
+
    </head>
    <body>
       <header class="header-center">
@@ -170,13 +145,9 @@
                </svg>
             </p>
             <div class="grid-img-text">
-               <picture>
-                  <img srcset="./program/photos/speakers/AI-2x.webp 1x,
-                     ./program/photos/speakers/AI-2x.webp 2x,
-                     ./program/photos/speakers/AI-3x.webp 3x"
-                     src="./program//photos/speakers/AI.jpg" 
-                     width="130" height="130" alt="AI Generated" />
-               </picture>
+               <img 
+                  src="./program//photos/speakers/AI-2x.webp" 
+                  width="130" height="130" alt="AI Generated" />
                <p>
                   Conference Chair: <br> 
                   Professor John Smith,<br>
