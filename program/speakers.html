@@ -38,6 +38,20 @@
       details { cursor:pointer;}
       .line-ht-sm {margin-bottom: 0;;}
       button { cursor: pointer;}
+            /*modal*/
+      .modal-btn {cursor: pointer;padding: 2px 5px;}
+      dialog[open] {max-width:80ch;margin: auto; padding: auto;box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);}
+      dialog::backdrop { backdrop-filter: blur(2px);}
+      .close {border-radius: 50%; color: white; background: black; position: absolute; top: 0; right: 0; cursor: pointer; }
+      .close:has(+ p) { top:1rem;}
+      dialog > article {font-style:normal;padding: 0 2ch;}
+      dialog >.title      {font:bold 16pt/1.1 Arial, sans-serif;}
+      .author     {font: normal 12pt/1.1 'Times New Roman', Times, serif;}
+      .affiliation{font: normal 12pt/1.1 'Times New Roman', Times, serif;padding:0;}
+      .abody      {font: normal 11pt/1.1 Arial,sans-serif; padding:0.4rem 1ch 0 0; }
+      .references{font-size: 10pt;padding:0.2rem 0 0 3ch;}
+      .ref-heading {text-indent: -1.5em; list-style-type: none;}
+      .artwork {width:100%; max-width:80ch;}
       @media print {
       section {visibility: hidden;}
       dialog {visibility: visible; position: absolute;left: 0;top: 5rem; border-color: white;overflow: hidden;}
